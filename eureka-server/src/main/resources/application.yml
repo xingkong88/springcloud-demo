@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: eurekaService
+server:
+  port: 8761
+#springcloud可能把计算机名当做域名
+#手动配置域名
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    #在默认设置下，Eureka服务注册中心也会将自己作为客户端来尝试注册它自己，所以会报错
+    #进行如下设置即可
+    register-with-eureka: false #此eureka不再注册到注册中心
+    fetch-registry: false #不再从其它中心拉取服务器信息
+#上面两个配置默认是true,实际生成会搭建集群,配置多个注册中心,现在是使用一个注册中心
+    #声明注册中心的访问地址,最后声明是eureka中心
+    service-url:
+      #url下面还有一个关键字,这个关键字没有提示,要手动输入
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka

@@ -1,0 +1,12 @@
+
+server:
+  port: 8000
+spring:
+  application:
+    name: ProvideMovie
+eureka:
+  client:
+    service-url:
+      defauleZone:  http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
